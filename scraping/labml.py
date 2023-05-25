@@ -46,7 +46,9 @@ def fetch_paper_details(paper):
 
 
 # Get the initial authorization token
+print("Getting authorization token for papers.labml.ai...")
 authorization_token = get_authorization_token()
+print(f"Authorization token: {authorization_token}")
 
 url = "https://papers.labml.ai/api/v1/papers?sorted_by=weekly&start=0&end=5"
 
@@ -67,12 +69,12 @@ try:
             response = session.get(url, headers=headers)
 
         papers = response.json()["data"]["papers"]
-        for paper in papers:
+        for paper in tqdm(papers):
             try:
                 metadata = fetch_paper_details(paper)
-                print(f"{metadata.title}: {metadata}")
+                tqdm.write(f"{metadata.title}: {metadata}")
             except Exception as e:
-                print(f"Error occurred: {e}")
+                tqdm.write(f"Error occurred: {e}")
 
 except Exception as e:
     print(f"Error occurred: {e}")
