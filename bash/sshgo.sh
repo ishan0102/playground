@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # SSHGo - SSH into accounts without memorizing hostnames
 function sshgo() {
     # Define the colors and styles using ANSI escape codes
@@ -13,7 +11,7 @@ function sshgo() {
     # Define your SSH accounts as indexed arrays
     local labels=("1" "2") # Labels for each account
     local descriptions=("Compling GPU Cluster" "Digital Ocean") # Descriptions for each account
-    local commands=("ssh irs428@compling.la.utexas.edu" "doctl compute ssh ishan-droplet") # SSH commands
+    local commands=("irs428@compling.la.utexas.edu" "root@178.128.135.139") # SSH commands
 
     # Print a pretty list of your SSH accounts
     echo -e "${GREEN}${BOLD}SSH Accounts:${RESET}"
@@ -46,5 +44,5 @@ function sshgo() {
 
     # SSH into the selected account
     echo -e "${GREEN}Connecting to ${descriptions[$index]}...${RESET}"
-    ${commands[$index]}
+    ssh ${commands[$index]}
 }
