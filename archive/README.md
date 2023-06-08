@@ -1,0 +1,1 @@
+I wrote most of this stuff back when I was learning programming in high school. I'm keeping it here for posterity.
